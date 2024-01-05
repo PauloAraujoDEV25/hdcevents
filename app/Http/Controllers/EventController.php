@@ -27,6 +27,7 @@ class EventController extends Controller
         $event->city = $request->city;
         $event->private = $request->private;
         $event->description = $request->description;
+        $event->items = $request->items;
 
 
         // Image Upload
@@ -49,6 +50,14 @@ class EventController extends Controller
         return redirect('/')->with('msg','Evento Criado com sucesso!') ;
      }
 
+     public function show($id) {
+
+        $event = Event::findOrFail($id);
+
+        return view('events.show', ['event' => $event]);
+
+     }
 }
+
 
 
